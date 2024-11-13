@@ -1,4 +1,4 @@
-# Software-project
+### Software-project
 Recipe to Cart
 Project Overview
 "Recipe to Cart" is a web application designed to streamline the process of grocery shopping by allowing users to add all ingredients for a recipe directly to their shopping cart. This application enhances user convenience by enabling recipe browsing, ingredient mapping to products, auto-filling shopping carts, and notifying users of ingredient sales.

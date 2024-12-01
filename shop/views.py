@@ -12,3 +12,17 @@ def create_data(request):
     recipe = Recipe.objects.create(title='Eggs with Pastrami', instructions='Beat eggs and cook with pastrami.', user=user)
 
     return render(request, 'success.html')  # Render a success page or redirect
+
+
+
+from rest_framework import generics
+from .models import Product
+from .serializers import ProductSerializer
+
+class ProductListCreateView(generics.ListCreateAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+
+class ProductDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer

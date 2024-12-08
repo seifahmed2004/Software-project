@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from shop.models import User, Product, Recipe
+from rest_framework.decorators import api_view
+from rest_framework_simplejwt.views import TokenObtainPairView
 
 def create_data(request):
     # Create a new user
@@ -83,3 +85,28 @@ class ProductListCreateView(generics.ListCreateAPIView):
     )
     def get(self, request, *args, **kwargs):
         return super().get(request, *args, **kwargs)
+
+from drf_yasg.utils import swagger_auto_schema
+
+@swagger_auto_schema(
+    method='get',
+    operation_description="Retrieve a list of products",
+    responses={200: ProductSerializer(many=True)},
+)
+@api_view(['GET'])
+def product_list(request):
+    products = Product.objects.all()
+    serializer = ProductSerializer(products, many=True)
+    return Response(serializer.data)
+
+
+from rest_framework.viewsets import ModelViewSet
+from .models import Product
+from .serializers import ProductSerializer
+
+class ProductViewSet(ModelViewSet):
+    """
+    A simple ViewSet for viewing and editing products.
+    """
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer

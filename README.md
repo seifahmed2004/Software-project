@@ -78,8 +78,7 @@ http://127.0.0.1:8000/
 
 📄 API Documentation
 
-The app uses Django REST Framework for API endpoints. Check out the API documentation for details:
-API Docs
+The app uses Django REST Framework for API endpoints and swagger you could see the api documentation in the files.
 
 🤝 Contributing
 

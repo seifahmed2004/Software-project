@@ -17,6 +17,7 @@ urlpatterns = [
     path('create/', views.create_data, name='create_data'),
     path('products/', ProductListCreateView.as_view(), name='product-list'),
     path('products/<int:pk>/', ProductDetailView.as_view(), name='product-detail'),
+    path('api/', include('cart.urls')),  # Include the cart app's URLs
 
     # JWT token routes
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
